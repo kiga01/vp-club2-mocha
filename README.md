@@ -1,5 +1,11 @@
 # vp-club2-mocha
 
+## Install and running
+
+Install the dependencies using "npm i"
+
+run the test using "npm test" or "gulp test"
+
 ## Object
 
 {   "id": "string",     "name": "string",     "level": 0,     "type": "string" }

@@ -1,12 +1,13 @@
 {
   "name": "Example-Project",
   "version": "1.0.0",
-  "description": "example",
+  "description": "example mocha chai API tests",
   "scripts": {
     "test": "gulp test",
     "node": "node"
   },
   "author": "kiga01",
+  "license": "MIT",
   "devDependencies": {
     "ajv": "^3.8.5",
     "body-parser": "^1.15.0",
@@ -19,5 +20,5 @@
     "node-uuid": "^1.4.7",
     "supertest": "^1.1.0",
     "supertest-as-promised": "^2.0.2"
-  },
+  }
 }
