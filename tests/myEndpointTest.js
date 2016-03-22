@@ -33,6 +33,7 @@ describe('Feature: Existent pokemons should be retrieved with all the mandatory 
     context('When the GET pokemons endpoint is invoked', () => {
         it(`Then it should get all the expected pokemons`, (done) => {
             return request.get('/')
+                .expect(200)
                 .then((res) => {
                     pokemons = res.body;
                     expect(pokemons).to.not.be.undefined;
@@ -45,18 +46,51 @@ describe('Feature: Existent pokemons should be retrieved with all the mandatory 
         });
     });
 
+    context('When the GET a single pokemon endpoint is invoked', () => {
+        it(`Then it should get one expected pokemon`, (done) => {
+            expect(pokemons).to.not.be.undefined;
+            return request.get('/' + pokemons[1].id)
+                .expect(200)
+                .then((res) => {
+                    var pokemon = res.body;
+                    expect(pokemon).to.not.be.undefined;
+                    pokemon.should.have.property('id');
+                    pokemon.should.have.property('name');
+                    pokemon.should.have.property('level');
+                    pokemon.should.have.property('type');
+                    done();
+                })
+        });
+
+        it(`Then expected HTTP 404 if pokemon doesn't exist`, (done) => {
+            return request.get('/FAKEID0001')
+                .expect(404, done)
+        });
+    });
+
     describe('When the PUT pokemon endpoint is invoked', () => {
         it(`Then it should update the expected pokemon`, (done) => {
             expect(pokemons).to.not.be.undefined;
             return request.put('/' + pokemons[1].id)
                 .send({name: 'charmeleon', type: 'FIRE', level: 20})
-                .expect(200)
                 .end((err, res) => {
                     expect(res.body.name).to.equal("charmeleon");
                     expect(res.body.type).to.equal("FIRE");
                     expect(res.body.level).to.equal(20);
                     done();
                 });
+        });
+
+        it(`Then expected HTTP 404 if pokemon doesn't exist`, (done) => {
+            return request.put('/FAKEID0001')
+                .send({name: 'pikachu', type: 'ELECTRIC', level: 1})
+                .expect(404, done)
+        });
+
+        it(`Then expected HTTP 400 if is a wrong pokemon structure`, (done) => {
+            return request.put('/FAKEID0001')
+                .send({owner: 'Ash', nickname: 'none'})
+                .expect(400, done)
         });
     });
 
@@ -68,6 +102,12 @@ describe('Feature: Existent pokemons should be retrieved with all the mandatory 
                 .end((err, res) => {
                     done();
                 });
+        });
+
+        it(`Then expected HTTP 404 if pokemon doesn't exist`, (done) => {
+            return request.put('/FAKEID0001')
+                .send({name: 'pikachu', type: 'ELECTRIC', level: 1})
+                .expect(404, done)
         });
     });
 });
