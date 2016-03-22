@@ -88,7 +88,8 @@ describe('Feature: Existent pokemons should be retrieved with all the mandatory 
         });
 
         it(`Then expected HTTP 400 if is a wrong pokemon structure`, (done) => {
-            return request.put('/FAKEID0001')
+            expect(pokemons).to.not.be.undefined;
+            return request.put('/' + pokemons[1].id)
                 .send({owner: 'Ash', nickname: 'none'})
                 .expect(400, done)
         });

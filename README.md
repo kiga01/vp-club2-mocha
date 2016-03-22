@@ -1,6 +1,6 @@
 # vp-club2-mocha
 
-## Object 
+## Object
 
 {   "id": "string",     "name": "string",     "level": 0,     "type": "string" }
 
@@ -12,29 +12,25 @@
 
 GET /v1/pokemons
 
-  Debe retornar todos los pokemons existentes, con un status 200
+  Must reurn the list of pokemons and HTTP status 200
 
 POST /v1/pokemons
 
-  Recibe en el cuerpo del mensaje un objeto pokemon para crearlo en la base de datos
-  Retorna el objeto creado junto con el atributo ID que se le asigno
-  Si el request no tiene una estructura correcta, retornara un error 400
+  If the object that we are sending is right return HTTP 200 if not it returns HTTP 400
 
 GET /v1/pokemons/<ID>
 
-  Obtiene el pokemon solicitado con el id dado en el parámetro de ruta
-  Si no se encuentra retorna 404
+  We should send the id of the pokemon it returns HTTP 200, if the id doesn't exist it return HTTP 404
 
 PUT /v1/pokemons/<ID>
 
-  Actualiza un pokemon asociado al id de ruta dado
-  Si el id no se encuentra en la base de datos, retorna a 404
-  Si el objeto enviado en el body no esta bien formado retorna 400
+  This endpoint update the pokemon with the matching id and the result would be HTTP 200, if the id doesnt exist it
+  returns HTTP 404, and if the structure sended its wrong it returns HTTP 400
 
 DELETE /v1/pokemons/<ID>
 
-  Si el id no se encuentra en la base de datos, retorna a 404
-  Retorna solo status 200 en caso de éxito.
+  This endpoint erase a pokemon with the matching id and the result would be HTTP 200, if the id doesnt exist it
+  returns HTTP 404
 
 ** Urls **
 
