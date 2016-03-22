@@ -2,12 +2,11 @@
   "name": "Example-Project",
   "version": "1.0.0",
   "description": "example",
-  "private": true,
   "scripts": {
-    "test": "mocha tests/*.js",
+    "test": "gulp test",
     "node": "node"
   },
-  "author": "you@example.com",
+  "author": "kiga01",
   "devDependencies": {
     "ajv": "^3.8.5",
     "body-parser": "^1.15.0",
