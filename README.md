@@ -1,10 +1,14 @@
 # vp-club2-mocha
 
-** Object **
+## Object 
 
 {   "id": "string",     "name": "string",     "level": 0,     "type": "string" }
 
-** End Points **
+## Types
+
+"NORMAL", "FIRE", "FIGHTING", "WATER", "FLYING", "GRASS", "POISON", "ELECTRIC","GROUND", "PSYCHIC", "ROCK", "ICE", "BUG", "DRAGO", "GHOST", "DARK", "STEEL", "FAIRY"
+
+## End Points 
 
 GET /v1/pokemons
 
