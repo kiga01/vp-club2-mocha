@@ -7,5 +7,5 @@ var testDirectory = [
 
 gulp.task('test', () =>{
     return gulp.src(testDirectory, {read: false})
-        .pipe(mocha({reporter: 'nyan'}));
+        .pipe(mocha({reporter: 'spec'}));
 });
